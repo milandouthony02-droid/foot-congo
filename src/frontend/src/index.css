@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "Plus Jakarta Sans", sans-serif;
+    --font-mono: "Geist Mono", monospace;
+    --radius: 0.75rem;
+
+    /* Dark-first theme: Foot Congo is a dark app by default (see .dark).
+       :root mirrors the dark tokens so the app renders correctly even
+       before the `dark` class is applied to <html>. */
+    --background: 0.16 0.02 158;
+    --foreground: 0.96 0.01 150;
+    --card: 0.205 0.024 158;
+    --card-foreground: 0.96 0.01 150;
+    --popover: 0.22 0.026 158;
+    --popover-foreground: 0.96 0.01 150;
+
+    --primary: 0.72 0.19 150;
+    --primary-foreground: 0.16 0.03 150;
+
+    --secondary: 0.26 0.028 158;
+    --secondary-foreground: 0.9 0.01 150;
+    --muted: 0.25 0.024 158;
+    --muted-foreground: 0.68 0.02 152;
+
+    --accent: 0.84 0.18 92;
+    --accent-foreground: 0.2 0.04 92;
+
+    --destructive: 0.62 0.24 27;
+    --destructive-foreground: 0.98 0.01 27;
+
+    --success: 0.72 0.19 150;
+    --warning: 0.84 0.18 92;
+
+    --border: 0.3 0.026 158;
+    --input: 0.3 0.026 158;
+    --ring: 0.72 0.19 150;
+
+    --chart-1: 0.72 0.19 150;
+    --chart-2: 0.84 0.18 92;
+    --chart-3: 0.62 0.24 27;
+    --chart-4: 0.62 0.13 220;
+    --chart-5: 0.75 0.15 55;
+
+    --sidebar: 0.185 0.022 158;
+    --sidebar-foreground: 0.96 0.01 150;
+    --sidebar-primary: 0.72 0.19 150;
+    --sidebar-primary-foreground: 0.16 0.03 150;
+    --sidebar-accent: 0.26 0.028 158;
+    --sidebar-accent-foreground: 0.9 0.01 150;
+    --sidebar-border: 0.3 0.026 158;
+    --sidebar-ring: 0.72 0.19 150;
+
+    /* Brand + atmosphere tokens */
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.72 0.19 150) 0%,
+      oklch(0.78 0.17 128) 100%
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.22 0.026 158) 0%,
+      oklch(0.185 0.022 158) 100%
+    );
+    --tricolor: linear-gradient(
+      90deg,
+      oklch(0.72 0.19 150) 0%,
+      oklch(0.72 0.19 150) 33%,
+      oklch(0.84 0.18 92) 33%,
+      oklch(0.84 0.18 92) 66%,
+      oklch(0.62 0.24 27) 66%,
+      oklch(0.62 0.24 27) 100%
+    );
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Fixed bottom navigation height (used for content padding) */
+    --nav-height: 4.25rem;
+  }
+
+  .dark {
+    --background: 0.16 0.02 158;
+    --foreground: 0.96 0.01 150;
+    --card: 0.205 0.024 158;
+    --card-foreground: 0.96 0.01 150;
+    --popover: 0.22 0.026 158;
+    --popover-foreground: 0.96 0.01 150;
+
+    --primary: 0.72 0.19 150;
+    --primary-foreground: 0.16 0.03 150;
+
+    --secondary: 0.26 0.028 158;
+    --secondary-foreground: 0.9 0.01 150;
+    --muted: 0.25 0.024 158;
+    --muted-foreground: 0.68 0.02 152;
+
+    --accent: 0.84 0.18 92;
+    --accent-foreground: 0.2 0.04 92;
+
+    --destructive: 0.62 0.24 27;
+    --destructive-foreground: 0.98 0.01 27;
+
+    --border: 0.3 0.026 158;
+    --input: 0.3 0.026 158;
+    --ring: 0.72 0.19 150;
+
+    --chart-1: 0.72 0.19 150;
+    --chart-2: 0.84 0.18 92;
+    --chart-3: 0.62 0.24 27;
+    --chart-4: 0.62 0.13 220;
+    --chart-5: 0.75 0.15 55;
+
+    --sidebar: 0.185 0.022 158;
+    --sidebar-foreground: 0.96 0.01 150;
+    --sidebar-primary: 0.72 0.19 150;
+    --sidebar-primary-foreground: 0.16 0.03 150;
+    --sidebar-accent: 0.26 0.028 158;
+    --sidebar-accent-foreground: 0.9 0.01 150;
+    --sidebar-border: 0.3 0.026 158;
+    --sidebar-ring: 0.72 0.19 150;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+
+  .bg-tricolor {
+    background-image: var(--tricolor);
+  }
+
+  .text-gradient-primary {
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Football scorelines: tabular figures keep digits from jittering */
+  .tabular-score {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+    letter-spacing: -0.01em;
+  }
+
+  /* Reserve space so fixed bottom nav never covers content */
+  .pb-nav {
+    padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Horizontally scrollable match ticker */
+  .scroll-x-snap {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .scroll-x-snap::-webkit-scrollbar {
+    display: none;
+  }
+  .snap-item {
+    scroll-snap-align: start;
+  }
+}

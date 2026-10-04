@@ -1,0 +1,21 @@
+{
+  "overview": "Une application mobile en français pour suivre le football congolais : actualités, matchs, classements, équipes et joueurs.",
+  "features": [
+    "Consulter les dernières actualités du football",
+    "Suivre les matchs, scores et résultats",
+    "Voir les classements par compétition",
+    "Explorer les équipes et leurs effectifs",
+    "Découvrir les joueurs et leurs statistiques",
+    "Navigation simple en bas de l'écran",
+    "Emplacements publicitaires réservés"
+  ],
+  "category": "sports",
+  "tags": [
+    "football",
+    "sports",
+    "actualit-s",
+    "classements",
+    "mobile"
+  ],
+  "last_updated": "2026-10-04T04:02:30.553Z"
+}

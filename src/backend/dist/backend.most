@@ -1,0 +1,212 @@
+// Version: 4.0.0
+type AccessControlState__201339279 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__230067015<Principal, UserRole__91647283>
+  };
+type AdSlot__1039947659 =
+  {
+    enabled : Bool;
+    id : Text;
+    imageUrl : Text;
+    placement : Text;
+    targetUrl : Text
+  };
+type Data__44217153<K, V> = {var count : Nat__227979830; kvs : [var ?(K, V)]};
+type Id__389469852 = Nat;
+type Internal__283199666<K, V> =
+  {children : [var ?Node__204828119<K, V>]; data : Data__44217153<K, V>};
+type Leaf__598469445<K, V> = {data : Data__44217153<K, V>};
+type Lineup__576860892 = {away : [Text]; home : [Text]};
+type List__355132335<T> =
+  {
+    var blockIndex : Nat__227979830;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__227979830
+  };
+type List__836382695<T> = List__355132335<T>;
+type Map__230067015<K, V> = Map__405889023<K, V>;
+type Map__405889023<K, V> = Map__603270868<K, V>;
+type Map__603270868<K, V> =
+  {var root : Node__204828119<K, V>; var size : Nat__227979830};
+type MatchId__940322495 = Id__389469852;
+type MatchStatus__427144453 = {#finished; #live; #upcoming};
+type Match__66421370 =
+  {
+    awayScore : ?Nat;
+    awayTeam : Text;
+    competition : Text;
+    homeScore : ?Nat;
+    homeTeam : Text;
+    id : MatchId__940322495;
+    kickoff : Timestamp__301639476;
+    lineup : Lineup__576860892;
+    scorers : [Scorer__209042765];
+    status : MatchStatus__427144453;
+    summary : Text
+  };
+type Nat__227979830 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__769816496 =
+  {
+    accessControlState : AccessControlState__201339279;
+    adSlots :
+      List__836382695<{
+                        enabled : Bool;
+                        id : Text;
+                        imageUrl : Text;
+                        placement : Text;
+                        targetUrl : Text
+                      }>;
+    matches :
+      List__836382695<{
+                        awayScore : ?Nat;
+                        awayTeam : Text;
+                        competition : Text;
+                        homeScore : ?Nat;
+                        homeTeam : Text;
+                        id : Nat;
+                        kickoff : Int;
+                        lineup : {away : [Text]; home : [Text]};
+                        scorers :
+                          [{minute : Nat; playerName : Text; teamName : Text}];
+                        status : {#finished; #live; #upcoming};
+                        summary : Text
+                      }>;
+    news :
+      List__836382695<{
+                        category : Text;
+                        content : Text;
+                        id : Nat;
+                        image : Text;
+                        publishedAt : Int;
+                        summary : Text;
+                        title : Text
+                      }>;
+    players :
+      List__836382695<{
+                        id : Nat;
+                        name : Text;
+                        photo : Text;
+                        position : Text;
+                        stats : {assists : Nat; goals : Nat; matches : Nat};
+                        teamName : Text
+                      }>;
+    standings :
+      List__836382695<{
+                        competition : Text;
+                        rows :
+                          [{
+                             drawn : Nat;
+                             lost : Nat;
+                             played : Nat;
+                             points : Nat;
+                             position : Nat;
+                             teamName : Text;
+                             won : Nat
+                           }]
+                      }>;
+    teams :
+      List__836382695<{
+                        city : Text;
+                        id : Nat;
+                        logo : Text;
+                        name : Text;
+                        squad : [Text]
+                      }>
+  };
+type NewsId__168210233 = Id__389469852;
+type News__533153384 =
+  {
+    category : Text;
+    content : Text;
+    id : NewsId__168210233;
+    image : Text;
+    publishedAt : Timestamp__301639476;
+    summary : Text;
+    title : Text
+  };
+type Node__204828119<K, V> =
+  {#internal : Internal__283199666<K, V>; #leaf : Leaf__598469445<K, V>};
+type OldActor__512397517 = {};
+type PlayerId__650251530 = Id__389469852;
+type PlayerStats__338810157 = {assists : Nat; goals : Nat; matches : Nat};
+type Player__789849039 =
+  {
+    id : PlayerId__650251530;
+    name : Text;
+    photo : Text;
+    position : Text;
+    stats : PlayerStats__338810157;
+    teamName : Text
+  };
+type Scorer__209042765 = {minute : Nat; playerName : Text; teamName : Text};
+type StandingRow__666234964 =
+  {
+    drawn : Nat;
+    lost : Nat;
+    played : Nat;
+    points : Nat;
+    position : Nat;
+    teamName : Text;
+    won : Nat
+  };
+type Standing__843397702 =
+  {competition : Text; rows : [StandingRow__666234964]};
+type TeamId__375216474 = Id__389469852;
+type Team__944861453 =
+  {
+    city : Text;
+    id : TeamId__375216474;
+    logo : Text;
+    name : Text;
+    squad : [Text]
+  };
+type Timestamp__301639476 = Int;
+type UserRole__91647283 = {#admin; #guest; #user};
+{
+  "00000000_000000" : OldActor__512397517 -> NewActor__769816496
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__230067015<Principal, UserRole__91647283>
+    };
+  stable adSlots :
+    {
+      var blockIndex : Nat__227979830;
+      var blocks : [var [var ?AdSlot__1039947659]];
+      var elementIndex : Nat__227979830
+    };
+  stable matches :
+    {
+      var blockIndex : Nat__227979830;
+      var blocks : [var [var ?Match__66421370]];
+      var elementIndex : Nat__227979830
+    };
+  stable news :
+    {
+      var blockIndex : Nat__227979830;
+      var blocks : [var [var ?News__533153384]];
+      var elementIndex : Nat__227979830
+    };
+  stable players :
+    {
+      var blockIndex : Nat__227979830;
+      var blocks : [var [var ?Player__789849039]];
+      var elementIndex : Nat__227979830
+    };
+  stable standings :
+    {
+      var blockIndex : Nat__227979830;
+      var blocks : [var [var ?Standing__843397702]];
+      var elementIndex : Nat__227979830
+    };
+  stable teams :
+    {
+      var blockIndex : Nat__227979830;
+      var blocks : [var [var ?Team__944861453]];
+      var elementIndex : Nat__227979830
+    }
+};
